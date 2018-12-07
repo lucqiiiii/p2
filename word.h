@@ -16,7 +16,9 @@ public:
     //modifiers:
     void insert(const string& w, const string& fname);
     void printw();
-    dnode* list_search(const string& x);
+    bool list_search(string x);
+    string get_info(const string& i, int n);
+
 private:
     struct dnode{
         string word;

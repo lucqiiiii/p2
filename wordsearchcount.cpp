@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include "word.h"
-
+#include "list.h"
 
 using namespace std;
 
@@ -78,10 +78,20 @@ int main(int argc, char* argv[])
 	if(input == "exit"){
 		break;
 	}
-        dnode* dword = myword -> list_search(input);
+        if(myword -> list_search(input)){
+            cout << "Enter a threshold for the minimum occurance of that word: ";
+            cin >> num;
+        //    string info = myword -> get_info(input,num);
+        //    cout << info << endl;
+        }
+        else{
+            cout << "There is no such word in the list, please try again." <<endl;
+            continue;
+        }
+/*        dnode* dword = myword -> list_search(input);
         ldnode* dlist = dword -> word_list;
         if(dword){ //check have that word
-            cout << "Enter a threshold for the minimum occurance of that word: "
+            cout << "Enter a threshold for the minimum occurance of that word: ";
             cin >> num;
             //check the num
             while(dlist){
@@ -107,7 +117,7 @@ int main(int argc, char* argv[])
                  << endl;
             continue;
         }
-        }  
+        } */ 
   }while(true);
 
 }

@@ -96,14 +96,50 @@ void word::printw(){
     }
 }
 
-dnode* list_search(const string& x){
+bool word::list_search(string x){
     dnode *cursor;
     for(cursor = head; cursor != NULL; cursor = cursor -> next){
         if(cursor -> word == x){
-            return cursor;
+            return true;
         }
-    return NULL;
+    return false;
 }
+
+/*string word::get_info(const string& i, int n){
+    dnode *cursor;
+    for()
+            //check the num
+            while(dlist){
+                if((dlist -> file).count() >= num){//appropriate num
+                    cout << dword -> word << endl;
+                    ldnode* check = dlist;//locate the starting node
+                    while(check){
+                        cout << (check -> file).filename() << " and " << (check -> file).count() <<endl;
+                        check = check -> next;
+                    }
+                }
+                dlist = dlist -> next;
+            }               
+            dlist = dword -> word_list;
+            //num is too big
+            cout << "Error, the highes occurance of that word is " << (dlist -> file).count() << endl;
+                cout << "Please try again."
+                continue;
+        }
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

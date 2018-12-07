@@ -1,6 +1,8 @@
 #ifndef WORD_H
 #define WORD_H
 #include <iostream>
+#include "list.h"
+
 using namespace std;
 
 class word
@@ -11,13 +13,14 @@ public:
     //destructor:
     ~word();
     //modifiers:
-    void insert(const string& w);
+    void insert(const string& w, const string& fname);
     void printw();
 private:
     struct dnode{
         string word;
         dnode* next;
         dnode* prev;
+        list* word_list;
     };
     dnode* head;
 };

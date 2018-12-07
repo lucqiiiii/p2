@@ -12,8 +12,8 @@ void itemtype::set_filename(string fname){
     file_name=fname;
     
 }
-void itemtype::set_count(const int& num) {
-    file_count=num;
+void itemtype::inc_count(const int& num) {
+    file_count++;
     
 }
 // observers

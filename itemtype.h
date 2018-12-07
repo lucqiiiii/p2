@@ -10,7 +10,7 @@ public:
     itemtype(string fname = "", const int& num=0 );
     // modifiers
     void set_filename(string fname);
-    void set_count(const int& num);
+    void inc_count(const int& num);
     // observers
     string filename() const;
     int count() const;

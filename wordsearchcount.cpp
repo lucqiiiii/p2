@@ -8,6 +8,7 @@
 #include <fstream>
 #include "word.h"
 
+
 using namespace std;
 
 int getdir (string dir, vector<string> &files)
@@ -59,7 +60,7 @@ int main(int argc, char* argv[])
 	// Now the string "word" holds the keyword, and the string "files[i]" holds the document name.
 	// Use these two strings to search/insert in your array/list of 
 	
-	myword -> insert(word);
+	myword -> insert(word,files[i]);
       }
     }
     fin.close();    

@@ -12,7 +12,7 @@ void itemtype::set_filename(string fname){
     file_name=fname;
     
 }
-void itemtype::inc_count(const int& num) {
+void itemtype::inc_count() {
     file_count++;
     
 }

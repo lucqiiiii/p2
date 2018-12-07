@@ -2,6 +2,7 @@
 #define WORD_H
 #include <iostream>
 #include "list.h"
+#include "itemtype.h"
 
 using namespace std;
 

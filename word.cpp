@@ -90,7 +90,8 @@ void word::printw(){
     dnode* temp = head;
     while(temp){
         cout << temp -> word << endl;
-        temp -> word_list -> printl() << endl;
+        temp -> word_list -> printl();
+        cout << endl;
         temp = temp -> next;
     }
 }

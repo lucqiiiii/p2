@@ -67,9 +67,9 @@ int main(int argc, char* argv[])
   }
   cout << "--------------------------------------" << endl;
   cout << "This is the next part of the program " << endl;
-  myword -> printw();
-}
-/*  string input;
+//  myword -> printw();
+//}
+  string input;
   int num;
   do{
 	cout << "Enter a word you want to search, "
@@ -78,21 +78,36 @@ int main(int argc, char* argv[])
 	if(input == "exit"){
 		break;
 	}
-        dnode* ptr = myword -> head;
-                
-        while(ptr){
-            if(ptr -> info == input){
-                ptr -> list_file -> 
-        if(answer == NULL){
+        dnode* dword = myword -> list_search(input);
+        ldnode* dlist = dword -> word_list;
+        if(dword){ //check have that word
+            cout << "Enter a threshold for the minimum occurance of that word: "
+            cin >> num;
+            //check the num
+            while(dlist){
+                if((dlist -> file).count() >= num){//appropriate num
+                    cout << dword -> word << endl;
+                    ldnode* check = dlist;//locate the starting node
+                    while(check){
+                        cout << (check -> file).filename() << " and " << (check -> file).count() <<endl;
+                        check = check -> next;
+                    }
+                }
+                dlist = dlist -> next;
+            }               
+            dlist = dword -> word_list;
+            //num is too big
+            cout << "Error, the highes occurance of that word is " << (dlist -> file).count() << endl;
+                cout << "Please try again."
+                continue;
+        }
+             
+        else{ //no such word
             cout << "There is no such word in the list, please try again."
                  << endl;
+            continue;
         }
-        else{
-            cout << "Enter a threshold for the appearance of that word: ";
-            cin >> num;
-            answer -> list_file -> search(num);
-        }
-  
+        }  
   }while(true);
+
 }
-*/

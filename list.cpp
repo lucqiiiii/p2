@@ -26,16 +26,32 @@ void list::add(const string& f){
     }
     else{ //already a list for that word
         ldnode *n = head;
-        while(n){ //check have that fname
-            if((n -> file).filename() == f){
+        while(n -> next){ //check not the last node
+            if((n -> file).filename() == f){ //check have that fname
                (n -> file).inc_count();
+               //Order
+               ldnode *h = head;
+               //count greater than the head
+        /*       if((n -> file).count() >= (h -> file).count()){
+                   n -> next = h;
+                   h -> prev = n;
+          */         
+               return;
             }
             n = n -> next;
+        }
+        if((n -> file).filename() == f){ //check last node
+            (n -> file).inc_count();
+            return;
         }
         //does not have that fnmae
         ldnode *temp = new ldnode;
         (temp -> file).set_filename(f);
         (temp -> file).inc_count();
+        // insert to the right spot
+        ldnode *h = head;
+        temp -> prev = n;
+        n -> next = temp;
         
     }
 }

@@ -77,10 +77,10 @@ void word::insert(const string& w, const string& fname){
             temp -> word = w;
             temp -> word_list = new list;
             temp -> word_list -> add(fname);
-            temp -> next = n;
             temp -> prev = n -> prev;
-            //n -> prev -> next = temp;
             n -> prev = temp;
+            temp -> next = n;
+            temp -> prev -> next = temp;
             return;
         }            
     }
@@ -95,3 +95,17 @@ void word::printw(){
         temp = temp -> next;
     }
 }
+
+dnode* list_search(const string& x){
+    dnode *cursor;
+    for(cursor = head; cursor != NULL; cursor = cursor -> next){
+        if(cursor -> word == x){
+            return cursor;
+        }
+    return NULL;
+}
+
+
+
+
+

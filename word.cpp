@@ -96,15 +96,15 @@ void word::printw(){
     }
 }
 
-bool word::list_search(string x){
+/*dnode* word::list_search(const string& x){
     dnode *cursor;
     for(cursor = head; cursor != NULL; cursor = cursor -> next){
         if(cursor -> word == x){
-            return true;
+            return cursor;
         }
-    return false;
+    return NULL;
 }
-
+*/
 /*string word::get_info(const string& i, int n){
     dnode *cursor;
     for()

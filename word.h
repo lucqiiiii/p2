@@ -6,6 +6,13 @@
 
 using namespace std;
 
+struct dnode{
+        string word;
+        dnode* next;
+        dnode* prev;
+        list* word_list;
+    };
+
 class word
 {
 public:
@@ -16,17 +23,19 @@ public:
     //modifiers:
     void insert(const string& w, const string& fname);
     void printw();
-    bool list_search(string x);
-    string get_info(const string& i, int n);
+    dnode* get_head(){ return head; }
+  //  string get_info(const string& i, int n);
 
 private:
-    struct dnode{
-        string word;
-        dnode* next;
-        dnode* prev;
-        list* word_list;
-    };
     dnode* head;
 };
 
+/*dnode* list_search(dnode* head, const string& x){
+    dnode *cursor;
+    for(cursor = head; cursor != NULL; cursor = cursor -> next){
+        if(cursor -> word == x){
+            return cursor;
+        }
+    return NULL;
+}*/
 #endif

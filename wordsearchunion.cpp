@@ -69,23 +69,73 @@ int main(int argc, char* argv[])
   cout << "This is the next part of the program " << endl;
 //  myword -> printw();
 //}
+//
   string input1;
-  string input2;
-  
+  string input2;  
   do{
-	cout << "Enter a word you want to search, "
+	cout << "\nEnter a word you want to search, "
 	<< "or 'exit' to stop the program: ";
 	cin >> input1;
 	if(input1 == "exit"){
             break;
 	}
-        cout << "Enter another word you want to search, "
+        
+        list* tempo = new list; //create a new list
+
+        dnode *dword1 = myword -> get_head();
+        while((dword1 != NULL) && ((dword1 -> word) != input1)){
+            dword1 = dword1 -> next;
+        } //get the node with that input1
+
+        if(dword1){ //check have that word
+            ldnode* dlist1 = dword1 -> word_list -> get_head();
+            
+            while(dlist1){
+                tempo -> add((dlist1 -> file).filename()) ;                                  
+                dlist1 = dlist1 -> next;
+            }   
+        }             
+        else{ //no such word
+            cout << "There is no such word in the list, please try again."
+                 << endl;
+            continue;
+        }
+
+        cout << "\nEnter another word you want to search, "
         << "or 'exit' to stop the program: ";
         cin >> input2;
         if(input2 == "exit"){
             break;    
         }
-           
+        
+        dnode *dword2 = myword -> get_head();
+        while((dword2 != NULL) && ((dword2 -> word) != input2)){
+            dword2 = dword2 -> next;
+        } //get the node with that input2
+
+        if(dword2){ //check have that word
+            ldnode* dlist2 = dword2 -> word_list -> get_head();
+            
+            while(dlist2){
+                string check = (dlist2 -> file).filename();
+                ldnode* temp = tempo -> head;
+                while(temp){
+                    if((temp -> file).filename() != check){
+                        temp = temp -> next;
+                    }
+                    else{
+                        
+                    tempo -> add(check);
+                }                                  
+                dlist2 = dlist2 -> next;
+            }   
+        }             
+        else{ //no such word
+            cout << "There is no such word in the list, please try again."
+                 << endl;
+            continue;
+        }
+
   }while(true);
 
 }

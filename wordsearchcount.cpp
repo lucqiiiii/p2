@@ -72,44 +72,42 @@ int main(int argc, char* argv[])
   string input;
   int num;
   do{
-	cout << "Enter a word you want to search, "
+	cout << "\nEnter a word you want to search, "
 	<< "or 'exit' to stop the program:";
 	cin >> input;
 	if(input == "exit"){
 		break;
 	}
-        if(myword -> list_search(input)){
-            cout << "Enter a threshold for the minimum occurance of that word: ";
-            cin >> num;
-        //    string info = myword -> get_info(input,num);
-        //    cout << info << endl;
+
+        dnode *dword = myword -> get_head();
+        while((dword != NULL) && ((dword -> word) != input)){
+            dword = dword -> next;
         }
-        else{
-            cout << "There is no such word in the list, please try again." <<endl;
-            continue;
-        }
-/*        dnode* dword = myword -> list_search(input);
-        ldnode* dlist = dword -> word_list;
+
         if(dword){ //check have that word
-            cout << "Enter a threshold for the minimum occurance of that word: ";
+            ldnode* dlist = dword -> word_list -> get_head();
+            cout << "\nEnter a threshold for the minimum occurance of that word: ";
             cin >> num;
             //check the num
+            cout << endl;
             while(dlist){
                 if((dlist -> file).count() >= num){//appropriate num
                     cout << dword -> word << endl;
-                    ldnode* check = dlist;//locate the starting node
-                    while(check){
-                        cout << (check -> file).filename() << " and " << (check -> file).count() <<endl;
-                        check = check -> next;
-                    }
+                   // ldnode* check = dlist;//locate the starting node
+                   // while(check){
+                    cout << (dlist -> file).filename() << " count: " << (dlist -> file).count() <<endl;
+                   //     check = check -> next;
                 }
+                    
                 dlist = dlist -> next;
-            }               
-            dlist = dword -> word_list;
+            }   
+            dlist = dword -> word_list -> get_head();
+            if((dlist -> file).count() < num){
             //num is too big
-            cout << "Error, the highes occurance of that word is " << (dlist -> file).count() << endl;
-                cout << "Please try again."
+            cout << "Error, the highest occurance of that word is " << (dlist -> file).count() << endl;
+                cout << "Please try again." << endl;
                 continue;
+            }
         }
              
         else{ //no such word
@@ -117,7 +115,7 @@ int main(int argc, char* argv[])
                  << endl;
             continue;
         }
-        } */ 
+       
   }while(true);
 
 }

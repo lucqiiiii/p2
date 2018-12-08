@@ -4,6 +4,12 @@
 #include "itemtype.h"
 using namespace std;
 
+struct ldnode{
+        itemtype file;
+        ldnode* next;
+        ldnode* prev;
+    };
+
 class list
 {
 public:
@@ -14,12 +20,9 @@ public:
     //modifiers:
     void add(const string& w);
     void printl();
+    
+    ldnode* get_head(){ return head; }
 private:
-    struct ldnode{
-        itemtype file;
-        ldnode* next;
-        ldnode* prev;
-    };
     ldnode* head;
 };
 

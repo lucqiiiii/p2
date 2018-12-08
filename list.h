@@ -20,7 +20,7 @@ public:
     //modifiers:
     void add(const string& w);
     void printl();
-    
+    void sort(ldnode* p);
     ldnode* get_head(){ return head; }
 private:
     ldnode* head;

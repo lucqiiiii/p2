@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
   }
   cout << "--------------------------------------" << endl;
   cout << "This is the next part of the program " << endl;
-//  myword -> printw();
+  myword -> printw();
 //}
 //
   string input1;
@@ -117,25 +117,21 @@ int main(int argc, char* argv[])
             ldnode* dlist2 = dword2 -> word_list -> get_head();
             
             while(dlist2){
-                string check = (dlist2 -> file).filename();
-                ldnode* temp = tempo -> head;
-                while(temp){
-                    if((temp -> file).filename() != check){
-                        temp = temp -> next;
-                    }
-                    else{
-                        
-                    tempo -> add(check);
-                }                                  
+                tempo -> add ((dlist2 -> file).filename());
                 dlist2 = dlist2 -> next;
-            }   
+            }
+                
         }             
         else{ //no such word
             cout << "There is no such word in the list, please try again."
                  << endl;
             continue;
         }
-
+        ldnode* ptr = tempo -> get_head();
+        while(ptr){
+            cout << (ptr -> file).filename() << endl;
+            ptr = ptr -> next;
+        }
   }while(true);
 
 }

@@ -67,9 +67,7 @@ int main(int argc, char* argv[])
   }
   cout << "--------------------------------------" << endl;
   cout << "This is the next part of the program " << endl;
-  myword -> printw();
-//}
-//
+
   string input1;
   string input2;  
   do{

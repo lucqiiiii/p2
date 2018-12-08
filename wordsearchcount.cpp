@@ -90,24 +90,25 @@ int main(int argc, char* argv[])
             cin >> num;
             //check the num
             cout << endl;
-            while(dlist){
-                if((dlist -> file).count() >= num){//appropriate num
-                    cout << dword -> word << endl;
-                   // ldnode* check = dlist;//locate the starting node
-                   // while(check){
-                    cout << (dlist -> file).filename() << " count: " << (dlist -> file).count() <<endl;
-                   //     check = check -> next;
-                }
-                    
-                dlist = dlist -> next;
-            }   
-            dlist = dword -> word_list -> get_head();
-            if((dlist -> file).count() < num){
+             if((dlist -> file).count() < num){
             //num is too big
             cout << "Error, the highest occurance of that word is " << (dlist -> file).count() << endl;
                 cout << "Please try again." << endl;
                 continue;
             }
+
+            while(dlist){
+                if((dlist -> file).count() >= num){
+             //   while((dlist -> file).count() >= num){//appropriate num
+                    cout << dword -> word << endl;
+                   
+                    cout << (dlist -> file).filename() << " count: " << (dlist -> file).count() <<endl;
+                }
+                    
+                dlist = dlist -> next;
+            }   
+            dlist = dword -> word_list -> get_head();
+            
         }
              
         else{ //no such word

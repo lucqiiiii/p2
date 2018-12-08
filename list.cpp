@@ -30,63 +30,13 @@ void list::add(const string& f){
             if((n -> file).filename() == f){ //check have that fname
                (n -> file).inc_count();
                sort(n);
-   /*            //Order
-               ldnode *h = head;
-               //count greater than the head
-               if(n == head){
-                    return;
-               }
-               if((n -> file).count() > (h -> file).count()){
-                   n -> next -> prev = n -> prev;
-                   n -> prev -> next = n -> next;
-                   n -> next = h;
-                   h -> prev = n;
-                   head = n;
-               }
-               else{
-                   while((h -> file).count() > (n -> file).count()){
-                       h = h -> next;
-                   }   
-                       n -> next -> prev = n -> prev;
-                       n -> prev -> next = n -> next;                       
-                       n -> prev = h -> prev;
-                       h -> prev = n;
-                       n -> next = h;
-                       n -> prev -> next = n;
-                      
-               }        */
                return;
             }
             n = n -> next;
         }
         if((n -> file).filename() == f){ //check last node
             (n -> file).inc_count();
-            sort(n);
-    /*        if(n -> next == NULL && n -> prev == NULL){ // there is only one node 
-                return;
-            }
-             
-             ldnode *h = head;
-               //count greater than the head
-               if((n -> file).count() > (h -> file).count()){
-                   n -> next -> prev = n -> prev;
-                   n -> prev -> next = n -> next;
-                   n -> next = h;
-                   h -> prev = n;
-                   head = n;
-               }
-               else{
-                   while((h -> file).count() > (n -> file).count()){
-                       h = h -> next;
-                   }   
-                       n -> next -> prev = n -> prev;
-                       n -> prev -> next = n -> next;                       
-                       n -> prev = h -> prev;
-                       h -> prev = n;
-                       n -> next = h;
-                       n -> prev -> next = n;
-                      
-               }      */ 
+            sort(n); 
             return;
         }
         //does not have that fnmae
@@ -112,7 +62,7 @@ void list::sort(ldnode* q){
         ldnode *ptr = q;
         q -> prev -> next = NULL;
         ldnode *cursor = head;
-        while((cursor -> file).count() >= (ptr -> file).count()){
+        while((cursor -> file).count() >= (q -> file).count()){
             cursor = cursor -> next;
         }
         if(cursor != head){
@@ -125,6 +75,7 @@ void list::sort(ldnode* q){
         ptr -> prev = NULL;
         cursor -> prev = ptr;
         ptr -> next = cursor;
+        head = ptr;
         }
         return;
     }
@@ -138,7 +89,7 @@ void list::sort(ldnode* q){
         q -> next -> prev = q -> prev;
         q -> prev -> next = q -> next;
         ldnode *cursor = head;
-        while((cursor -> file).count() > (ptr -> file).count()){
+        while((cursor -> file).count() > (q -> file).count()){
             cursor = cursor -> next;
         }
         if(cursor != head){
@@ -147,10 +98,11 @@ void list::sort(ldnode* q){
         ptr -> next = cursor;
         ptr -> prev -> next = ptr;
         }
-         else{
+        else{
         ptr -> prev = NULL;
         cursor -> prev = ptr;
         ptr -> next = cursor;
+        head = cursor;
         }
         return;
     }

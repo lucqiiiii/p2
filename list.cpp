@@ -102,43 +102,60 @@ void list::add(const string& f){
 }
 
 void list::sort(ldnode* q){
-    int n = 0;
-    ldnode *ptr = q;
-    if(ptr -> next == NULL){ //only one node
+    if(q == head){ //head
         return;
     }
-    ldnode *end;
-    ldnode *temp;
-    
-    while(ptr -> next != NULL){
-        ptr = ptr -> next;
+    if((q -> prev -> file).count() >= (q -> file).count()){
+        return;
     }
-    while(ptr -> prev != NULL){
-        end = ptr;
-        temp = ptr -> prev;
-        ptr = ptr -> prev;
-            while(temp != NULL && (temp -> file).count() >= (end -> file).count()){
-                temp = temp -> prev;
-                n++;
-            }
-            if(n){
-                if(temp == NULL){
-                    temp = q;
-                    end -> prev = NULL;
-                    end -> next = temp;
-                    end -> next -> prev = end;
-                    q = end;
-                }
-                else{
-                    temp -> prev -> next = end;
-                    end -> prev = temp -> prev;
-                    temp -> prev = end;
-                    end -> next = temp;
-                }
-                ptr -> next = NULL;
-           }
-      }
+    if(q -> next == NULL){ // tail
+        ldnode *ptr = q;
+        q -> prev -> next = NULL;
+        ldnode *cursor = head;
+        while((cursor -> file).count() >= (ptr -> file).count()){
+            cursor = cursor -> next;
+        }
+        if(cursor != head){
+        ptr -> prev = cursor -> prev;
+        cursor -> prev = ptr;
+        ptr -> next = cursor;
+        ptr -> prev -> next = ptr;
+        }
+        else{
+        ptr -> prev = NULL;
+        cursor -> prev = ptr;
+        ptr -> next = cursor;
+        }
+        return;
+    }
+
+    if((q -> file).count() <= (q -> prev -> file).count()){
+        return;
+    }
+
+    else{
+        ldnode *ptr = q;
+        q -> next -> prev = q -> prev;
+        q -> prev -> next = q -> next;
+        ldnode *cursor = head;
+        while((cursor -> file).count() > (ptr -> file).count()){
+            cursor = cursor -> next;
+        }
+        if(cursor != head){
+        ptr -> prev = cursor -> prev;
+        cursor -> prev = ptr;
+        ptr -> next = cursor;
+        ptr -> prev -> next = ptr;
+        }
+         else{
+        ptr -> prev = NULL;
+        cursor -> prev = ptr;
+        ptr -> next = cursor;
+        }
+        return;
+    }
 }
+
 void list::printl(){
     ldnode* temp = head;
     while(temp){
